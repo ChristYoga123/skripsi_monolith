@@ -1,0 +1,123 @@
+/* Import font can't be moved to Tailwind */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+* {
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+/* Gradient text effect - can't be achieved with default Tailwind */
+.gradient-text {
+    background: linear-gradient(135deg, #2dcc70, #25a65c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    display: inline-block;
+}
+
+.gradient-text::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(135deg, #2dcc70, #25a65c);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: right;
+}
+
+.gradient-text:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Floating animation - custom keyframes needed */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Shine effect - complex animation */
+.shine-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.shine-effect::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 100%
+    );
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
+}
+
+/* Mobile menu specific styles - needs specific states */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 50;
+}
+
+.mobile-menu.active {
+    transform: translateX(0);
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Swiper custom styles - vendor specific */
+.swiper-pagination-bullet-active {
+    background: #2dcc70 !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #2dcc70 !important;
+}
+
+/* Custom dark mode styles that extend beyond Tailwind's capabilities */
+.dark .card-hover::before {
+    background: linear-gradient(
+        135deg,
+        rgba(16, 185, 129, 0.2),
+        rgba(16, 185, 129, 0.05)
+    );
+}

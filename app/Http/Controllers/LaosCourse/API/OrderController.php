@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Http\Controllers\LaosCourse\API;
+
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\Helpers\ResponseFormatterController;
+use App\Models\Transaksi;
+use Illuminate\Http\Request;
+
+class OrderController extends Controller
+{
+    public function index()
+    {
+        $transaksi = Transaksi::with(['student' => function ($query) {
+            $query->select('id', 'name');
+            }, 'kursus' => function ($query) {
+                $query->select('id', 'judul');
+            }])
+            ->latest()
+            ->limit(40)
+            ->get();
+
+        return ResponseFormatterController::success($transaksi, 'Data Seluruh Transaksi Berhasil Diambil');
+    }
+}
