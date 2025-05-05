@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helpers\ResponseFormatterController;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -16,7 +17,7 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        $request->validate([
+        $data = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|email:dns|max:255|unique:users',
             'password' => 'required|string|min:8',
@@ -35,10 +36,15 @@ class AuthController extends Controller
             'password.min' => 'Password minimal 8 karakter',
         ]);
 
+        if($data->fails())
+        {
+            return ResponseFormatterController::error($data->errors(), 422);
+        }
+
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'name' => $data->name,
+            'email' => $data->email,
+            'password' => bcrypt($data->password),
         ]);
 
         $user->assignRole('student');
@@ -53,22 +59,29 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $request->validate([
-            'email' => 'required|string|email|max:255',
+        $data = Validator::make($request->all(), [
+            'email' => 'required|string|email|email:dns|max:255',
             'password' => 'required|string|min:8',
         ], [
             'email.required' => 'Email wajib diisi',
             'email.string' => 'Email harus berupa string',
             'email.email' => 'Email tidak valid',
+            'email.dns' => 'Email tidak valid',
             'email.max' => 'Email tidak boleh lebih dari 255 karakter',
             'password.required' => 'Password wajib diisi',
             'password.string' => 'Password harus berupa string',
             'password.min' => 'Password minimal 8 karakter',
         ]);
 
-        $credentials = $request->only('email', 'password');
+        if($data->fails())
+        {
+            return ResponseFormatterController::error($data->errors(), 422);
+        }
 
-        if (! $token = auth('api')->attempt($credentials)) {
+        if (! $token = auth('api')->attempt([
+            'email' => $request->email,
+            'password' => $request->password
+        ])) {
             return ResponseFormatterController::error('Unauthenticated', 401);
         }
 
