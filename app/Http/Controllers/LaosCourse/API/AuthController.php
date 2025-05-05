@@ -42,9 +42,9 @@ class AuthController extends Controller
         }
 
         $user = User::create([
-            'name' => $data->name,
-            'email' => $data->email,
-            'password' => bcrypt($data->password),
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
         ]);
 
         $user->assignRole('student');
