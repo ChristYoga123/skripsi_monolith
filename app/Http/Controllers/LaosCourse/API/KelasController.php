@@ -12,9 +12,7 @@ class KelasController extends Controller
     public function index()
     {
         $kursus = Kursus::withCount(['mentors', 'students'])
-            ->whereIsPublished(true)
             ->latest()
-            ->limit(40)
             ->get();
         $kursus->map(function ($item) {
             $item->thumbnail = $item->getFirstMediaUrl('kursus-thumbnail');

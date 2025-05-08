@@ -1,0 +1,65 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Kursus;
+use App\Models\User;
+use App\Enums\LaosCourse\Kursus\KategoriEnum;
+use App\Enums\LaosCourse\Kursus\LevelEnum;
+use App\Enums\LaosCourse\Kursus\TipeEnum;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
+
+class KursusSeeder extends Seeder
+{
+    public function run(): void
+    {
+        $faker = Faker::create('id_ID');
+        
+        // Buat 10 user mentor
+        $mentors = User::factory(10)->create();
+        foreach ($mentors as $mentor) {
+            $mentor->assignRole('mentor');
+        }
+
+        // Buat 40 kursus
+        for ($i = 0; $i < 100; $i++) {
+            DB::beginTransaction();
+            try {
+                $kategori = $faker->randomElement(KategoriEnum::cases());
+                $level = $faker->randomElement(LevelEnum::cases());
+                $tipe = $faker->randomElement(TipeEnum::cases());
+                
+                $kursus = Kursus::create([
+                    'judul' => $faker->sentence(3),
+                    'kategori' => $kategori,
+                    'deskripsi' => $faker->paragraph(3),
+                    'keypoints' => [
+                        $faker->sentence(),
+                        $faker->sentence(),
+                        $faker->sentence(),
+                    ],
+                    'level' => $level,
+                    'tipe' => $tipe,
+                    'harga' => $tipe === TipeEnum::FREE ? 0 : $faker->numberBetween(100000, 1000000),
+                    'is_published' => $faker->boolean(80),
+                    'resource_url' => $faker->url(),
+                ]);
+
+                // Tambahkan thumbnail
+                $kursus->addMediaFromUrl('https://picsum.photos/800/600')
+                    ->toMediaCollection('kursus-thumbnail');
+
+                // Tambahkan mentor (1-3 mentor per kursus)
+                $randomMentors = $mentors->random($faker->numberBetween(1, 3));
+                $kursus->mentors()->attach($randomMentors->pluck('id'));
+
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollBack();
+                throw $e;
+            }
+        }
+    }
+} 
