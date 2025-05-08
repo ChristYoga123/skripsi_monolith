@@ -4,21 +4,27 @@ namespace App\Http\Controllers\LaosCourse\API;
 
 use App\Enums\LaosCourse\Kursus\TipeEnum;
 use Exception;
-use App\Models\Diskon;
 use App\Models\Kursus;
 use App\Models\Transaksi;
 use App\Models\KursusMurid;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Interfaces\PaymentInterface;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Helpers\ResponseFormatterController;
 
-class CheckoutController extends Controller
+class TransactionController extends Controller
 {
+    public function index()
+    {
+        $transaksi = Transaksi::query()
+            ->latest()
+            ->limit(40)
+            ->get();
+
+        return ResponseFormatterController::success($transaksi, 'Data Seluruh Transaksi Berhasil Diambil');
+    }
     // Kursus Gratis
     public function daftar($slug)
     {   
