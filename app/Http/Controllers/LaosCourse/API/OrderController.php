@@ -11,12 +11,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $transaksi = Transaksi::with(['student' => function ($query) {
-            $query->select('id', 'name');
-            }, 'kursus' => function ($query) {
-                $query->select('id', 'judul');
-            }])
-            ->latest()
+        $transaksi = Transaksi::latest()
             ->limit(40)
             ->get();
 
