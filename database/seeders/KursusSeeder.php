@@ -10,6 +10,7 @@ use App\Enums\LaosCourse\Kursus\TipeEnum;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
+use Illuminate\Support\Str;
 
 class KursusSeeder extends Seeder
 {
@@ -23,16 +24,18 @@ class KursusSeeder extends Seeder
             $mentor->assignRole('mentor');
         }
 
-        // Buat 40 kursus
-        for ($i = 0; $i < 100; $i++) {
+        // Buat 100 kursus
+        for ($i = 1; $i <= 100; $i++) {
             DB::beginTransaction();
             try {
                 $kategori = $faker->randomElement(KategoriEnum::cases());
                 $level = $faker->randomElement(LevelEnum::cases());
                 $tipe = $faker->randomElement(TipeEnum::cases());
                 
+                $judul = "Kursus-" . $i;
                 $kursus = Kursus::create([
-                    'judul' => $faker->sentence(3),
+                    'judul' => $judul,
+                    'slug' => Str::slug($judul),
                     'kategori' => $kategori,
                     'deskripsi' => $faker->paragraph(3),
                     'keypoints' => [
