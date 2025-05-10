@@ -44,8 +44,8 @@ class KursusSeeder extends Seeder
                         $faker->sentence(),
                     ],
                     'level' => $level,
-                    'tipe' => $tipe,
-                    'harga' => $tipe === TipeEnum::FREE ? 0 : $faker->numberBetween(100000, 1000000),
+                    'tipe' => 'free',
+                    'harga' => 0,
                     'is_published' => $faker->boolean(80),
                     'resource_url' => $faker->url(),
                 ]);
