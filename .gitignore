@@ -1,3 +1,6 @@
+jdepend*
+pdepend*
+pyramid.svg
 phpmetrics/
 /.phpunit.cache
 /node_modules
