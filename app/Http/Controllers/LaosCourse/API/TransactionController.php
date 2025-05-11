@@ -18,9 +18,7 @@ class TransactionController extends Controller
 {
     public function index()
     {
-        $transaksi = Transaksi::query()
-            ->latest()
-            ->limit(40)
+        $transaksi = Transaksi::latest()
             ->get();
 
         return ResponseFormatterController::success($transaksi, 'Data Seluruh Transaksi Berhasil Diambil');
