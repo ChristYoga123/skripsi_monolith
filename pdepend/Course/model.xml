@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metrics generated="2025-05-26T17:28:39" pdepend="@package_version@" ahh="2" andc="0" calls="5" ccn="3" ccn2="3" cloc="0" clsa="0" clsc="1" eloc="31" fanout="1" leafs="0" lloc="16" loc="39" maxDIT="2" ncloc="39" noc="1" nof="0" noi="0" nom="3" nop="1" roots="1">
+  <files>
+    <file name="D:\Kuliah\Project\monolith\app\Models\Kursus.php" loc="39" cloc="0" eloc="31" lloc="16" ncloc="39"/>
+  </files>
+  <package name="App\Models" noc="1" noi="0" nom="3" nof="0" cr="0.15" rcr="0.405">
+    <class name="Kursus" fqname="App\Models\Kursus" start="12" end="38" loc="27" cloc="0" eloc="10" lloc="4" ncloc="27" dit="2" noam="3" nocc="0" noom="0" nom="3" cr="0.15" rcr="0.405" ca="0" cbo="1" ce="1" impl="1" cis="3" csz="4" npm="3" vars="1" varsi="1" varsnp="0" wmc="3" wmci="3" wmcnp="3">
+      <file name="D:\Kuliah\Project\monolith\app\Models\Kursus.php"/>
+      <method name="setJudulAttribute" start="23" end="27" ccn="1" ccn2="1" loc="5" cloc="0" eloc="4" lloc="2" ncloc="5" npath="1" hnt="19" hnd="13" hv="70.308354644681" hd="4.7142857142857" hl="0.21212121212121" he="331.45367189635" ht="18.414092883131" hb="0.01596469533382" hi="14.913893409478" mi="73.799415234197"/>
+      <method name="mentors" start="29" end="32" ccn="1" ccn2="1" loc="4" cloc="0" eloc="3" lloc="1" ncloc="4" npath="1" hnt="13" hnd="11" hv="44.972611042285" hd="4.8" hl="0.20833333333333" he="215.86853300297" ht="11.992696277943" hb="0.011995130357899" hi="9.3692939671427" mi="77.883626834239"/>
+      <method name="students" start="34" end="37" ccn="1" ccn2="1" loc="4" cloc="0" eloc="3" lloc="1" ncloc="4" npath="1" hnt="13" hnd="11" hv="44.972611042285" hd="4.8" hl="0.20833333333333" he="215.86853300297" ht="11.992696277943" hb="0.011995130357899" hi="9.3692939671427" mi="77.883626834239"/>
+    </class>
+  </package>
+</metrics>

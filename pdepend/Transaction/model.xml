@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metrics generated="2025-05-26T17:30:20" pdepend="@package_version@" ahh="2" andc="0" calls="2" ccn="2" ccn2="2" cloc="0" clsa="0" clsc="1" eloc="18" fanout="2" leafs="0" lloc="8" loc="23" maxDIT="2" ncloc="23" noc="1" nof="0" noi="0" nom="2" nop="1" roots="1">
+  <files>
+    <file name="D:\Kuliah\Project\monolith\app\Models\Transaksi.php" loc="23" cloc="0" eloc="18" lloc="8" ncloc="23"/>
+  </files>
+  <package name="App\Models" noc="1" noi="0" nom="2" nof="0" cr="0.15" rcr="0.2775">
+    <class name="Transaksi" fqname="App\Models\Transaksi" start="8" end="22" loc="15" cloc="0" eloc="6" lloc="2" ncloc="15" dit="2" noam="2" nocc="0" noom="0" nom="2" cr="0.15" rcr="0.2775" ca="0" cbo="2" ce="2" impl="0" cis="2" csz="3" npm="2" vars="1" varsi="1" varsnp="0" wmc="2" wmci="2" wmcnp="2">
+      <file name="D:\Kuliah\Project\monolith\app\Models\Transaksi.php"/>
+      <method name="student" start="13" end="16" ccn="1" ccn2="1" loc="4" cloc="0" eloc="3" lloc="1" ncloc="4" npath="1" hnt="9" hnd="9" hv="28.529325012981" hd="6" hl="0.16666666666667" he="171.17595007788" ht="9.5097750043269" hb="0.010276389970974" hi="4.7548875021635" mi="79.267620989406"/>
+      <method name="kursus" start="18" end="21" ccn="1" ccn2="1" loc="4" cloc="0" eloc="3" lloc="1" ncloc="4" npath="1" hnt="9" hnd="9" hv="28.529325012981" hd="6" hl="0.16666666666667" he="171.17595007788" ht="9.5097750043269" hb="0.010276389970974" hi="4.7548875021635" mi="79.267620989406"/>
+    </class>
+  </package>
+</metrics>

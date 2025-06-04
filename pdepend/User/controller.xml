@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metrics generated="2025-05-26T17:25:59" pdepend="@package_version@" ahh="2" andc="0" calls="21" ccn="6" ccn2="6" cloc="17" clsa="0" clsc="1" eloc="77" fanout="5" leafs="0" lloc="22" loc="107" maxDIT="2" ncloc="90" noc="1" nof="0" noi="0" nom="3" nop="1" roots="1">
+  <files>
+    <file name="D:\Kuliah\Project\monolith\app\Http\Controllers\LaosCourse\API\AuthController.php" loc="107" cloc="17" eloc="77" lloc="22" ncloc="90"/>
+  </files>
+  <package name="App\Http\Controllers\LaosCourse\API" noc="1" noi="0" nom="3" nof="0" cr="0.15" rcr="0.2775">
+    <class name="AuthController" fqname="App\Http\Controllers\LaosCourse\API\AuthController" start="11" end="106" loc="96" cloc="17" eloc="64" lloc="13" ncloc="79" dit="2" noam="3" nocc="0" noom="0" nom="3" cr="0.15" rcr="0.2775" ca="0" cbo="5" ce="5" impl="0" cis="2" csz="3" npm="2" vars="0" varsi="0" varsnp="0" wmc="6" wmci="6" wmcnp="5">
+      <file name="D:\Kuliah\Project\monolith\app\Http\Controllers\LaosCourse\API\AuthController.php"/>
+      <method name="register" start="18" end="53" ccn="2" ccn2="2" loc="36" cloc="0" eloc="31" lloc="6" ncloc="36" npath="2" hnt="116" hnd="56" hv="673.65317095868" hd="7.0652173913043" hl="0.14153846153846" he="4759.5060991646" ht="264.41700550914" hb="0.094316281590074" hi="95.347833427998" mi="47.393735223198"/>
+      <method name="login" start="60" end="89" ccn="3" ccn2="3" loc="30" cloc="0" eloc="26" lloc="6" ncloc="30" npath="4" hnt="94" hnd="45" hv="516.23419105499" hd="8.8970588235294" hl="0.11239669421488" he="4592.9659645334" ht="255.16477580741" hb="0.092103096215397" hi="58.023016515272" mi="49.734924780151"/>
+      <method name="respondWithToken" start="98" end="105" ccn="1" ccn2="1" loc="8" cloc="0" eloc="7" lloc="1" ncloc="8" npath="1" hnt="26" hnd="19" hv="110.44611534953" hd="7.2" hl="0.13888888888889" he="795.21203051664" ht="44.178446139813" hb="0.02861106603899" hi="15.339738242991" mi="67.124392539797"/>
+    </class>
+  </package>
+</metrics>
